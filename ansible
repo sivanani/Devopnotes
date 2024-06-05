@@ -18,7 +18,7 @@ username: ubuntu pwd:DevOps321
 >explorer.exe . - to access windows current working directory of wsl
 >chmod 400 <pem file name>
 > ssh-copy-id -f "-o IdentityFile <path of pem file>" ubuntu@host
-> ssh "-o IdentityFile <path of pem file>" ubuntu@hos>
+> ssh "-o IdentityFile <path of pem file>" ubuntu@host>
 >eval `ssh-agent -s`(To start agent once again and add passpharse for once for thsat session)
 >ssh-add ~/.ssh/id_rsa( for enter passphare for key for password less authentication from wsl to cloud)
 password authentication
@@ -43,3 +43,15 @@ If inventory file is not provided we can provide details in /etc/ansible/hosts
 upgrading ansible solves ModuleNotFoundError: No module named 'ansible.module_utils.six.moves' with beloe command
 python3 -m pip install --upgrade --user ansible
 
+YAML syntax
+starts with ---
+---
+name:  sivarao
+age:  32
+work:  yes
+ansible playbook
+Inside playbook we can write multiple plays
+Based on the task number of plays will be decided
+> ansible-playbook -i <inventoryfile> <playbook>
+check mode used to implement playbook before running in production
+> ansible-playbook --check playbook.yaml

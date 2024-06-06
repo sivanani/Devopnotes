@@ -1,0 +1,67 @@
+configuration management																																																																																																																																																																																																																																																																																																																
+chef-Need to install agent on target machines
+puppet/ruby - Need to install agent on target machines
+
+
+ansible/YAML
+Agentless
+control node- anisble installed on the machine
+Manage node - all the machines which are used to install software (ex: windows, linux, debain)
+configuration management (installation of software)
+provisioning (creation of ec2 instance on aws,gcp,azure)
+deployment (because using control node we can deploy anything on manage node)
+network automation (automaiton of vlan)
+anisble and teeraform both can be used as provisioning, but terraform core skill is used as IAC
+control node should be installed on debain,linux or unix operating systems
+WSL (windows subsystem for linux distribution on windows system)
+username: ubuntu pwd:DevOps321
+>explorer.exe . - to access windows current working directory of wsl
+>chmod 400 <pem file name>
+> ssh-copy-id -f "-o IdentityFile <path of pem file>" ubuntu@host
+> ssh "-o IdentityFile <path of pem file>" ubuntu@host>
+>eval `ssh-agent -s`(To start agent once again and add passpharse for once for thsat session)
+>ssh-add ~/.ssh/id_rsa( for enter passphare for key for password less authentication from wsl to cloud)
+password authentication
+> sudo vim /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+> sudo vim /etc/ssh/ (if not using ec2 instance navigate to this path and update ssh_config folder)
+>\\wsl$ - path of wsl directory
+>wsl --install
+>wsl --list --online
+>wsl --install -d <DistroName>
+>wsl --install -d <Distribution Name>
+>pip install anisble
+>sudo apt install ansible
+>anisble -version
+two ways of authentication (ssh keys and password)
+only first time need to provide password to authenticate from machine a to b or pem file
+Inventory file is heart of ansible (inventory.ini)
+If inventory file is not provided we can provide details in /etc/ansible/hosts
+>ansible -i inventory.ini -m ping all
+>ansible -i inventory.ini -m ping ubuntu@host
+>ansible -i inventory.ini -m ping <groupname>
+
+upgrading ansible solves ModuleNotFoundError: No module named 'ansible.module_utils.six.moves' with beloe command
+python3 -m pip install --upgrade --user ansible
+
+YAML syntax
+starts with ---
+---
+name:  sivarao
+age:  32
+work:  yes
+ansible playbook
+Inside playbook we can write multiple plays
+Based on the task number of plays will be decided
+> ansible-playbook -i <inventoryfile> <playbook>
+check mode used to implement playbook before running in production
+> ansible-playbook --check playbook.
+to address Readability and modularitiy in ansible concept of roles exists
+when complicated ansible playbooks are written roles must be used
+> ansible-galaxy role init <role name>
+> ansible galaxy is used to share created roles across your organization
+> Different folders in ansible roles
+> var, tasks, meta, handlers(this are the tasks executed based on other tasks execution), defaults(default values), files and templates (when you want
+change the content of file dynamically)
+ansible follows jinga2 templating language
+>ls -ltr
+

@@ -54,4 +54,14 @@ Inside playbook we can write multiple plays
 Based on the task number of plays will be decided
 > ansible-playbook -i <inventoryfile> <playbook>
 check mode used to implement playbook before running in production
-> ansible-playbook --check playbook.yaml
+> ansible-playbook --check playbook.
+to address Readability and modularitiy in ansible concept of roles exists
+when complicated ansible playbooks are written roles must be used
+> ansible-galaxy role init <role name>
+> ansible galaxy is used to share created roles across your organization
+> Different folders in ansible roles
+> var, tasks, meta, handlers(this are the tasks executed based on other tasks execution), defaults(default values), files and templates (when you want
+change the content of file dynamically)
+ansible follows jinga2 templating language
+>ls -ltr
+

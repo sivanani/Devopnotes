@@ -1,8 +1,6 @@
 configuration management																																																																																																																																																																																																																																																																																																																
 chef-Need to install agent on target machines
 puppet/ruby - Need to install agent on target machines
-
-
 ansible/YAML
 Agentless
 control node- anisble installed on the machine
@@ -31,7 +29,7 @@ password authentication
 >wsl --install -d <Distribution Name>
 >pip install anisble
 >sudo apt install ansible
->anisble -version
+>ansible --version
 two ways of authentication (ssh keys and password)
 only first time need to provide password to authenticate from machine a to b or pem file
 Inventory file is heart of ansible (inventory.ini)
@@ -64,4 +62,15 @@ when complicated ansible playbooks are written roles must be used
 change the content of file dynamically)
 ansible follows jinga2 templating language
 >ls -ltr
-
+>anisble-galaxy role -h
+#Talking to api of resources using control node and create ec2 instances
+>collections - Apart from the built in modules related to ansible
+> ansible vault to keep api keys
+> boto3 module is used to install on control node to talk to aws
+> ansible-galaxy collection install <collection name>
+openssl rand -base64 2048 > vault.pass
+> ansible-vault create group_vars/all/pass.yml --vault-password-file vault.pass
+> ansible-playbook -i inventory.ini ec2_create.yaml --vault-password-file vault.pass
+the precidence declaration of variables declare in vars take more priority than in defaults
+extra vars has the highest precidence which was created during adhoc
+group vars

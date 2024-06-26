@@ -1,0 +1,24 @@
+Infrastructure 
+server -> terraform -> API -> AWS
+> aws configure
+> aws ec2 describe-instances
+> create ec2 instance 0 -> create and attach role 
+> Terraform is written in HCL (hashicop langauage)
+>It has many providers (ex:aws, gcp, azure)
+>variables, output, data, provider, locals and module
+>data block is used to search resource in cloud
+>To install terraform in centos/RHEL
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
+>module is nothing but function
+>terraform files end with .tf or .tnf extension
+>files will download from terraform in alphabetical order
+>init, plan, destroy and apply
+>code is written in blocks 
+resource "aws" ""{
+
+}
+>Arguments are inputs artibutes are outputs
+>create ec2 instance and dns records
+> single quotes does not supported by terraform. only strings needed to be quoted
